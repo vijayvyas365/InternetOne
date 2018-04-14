@@ -1,0 +1,48 @@
+Name of the most expensive product(s)
+---------------------------------------------------------------
+
+Note: below query will return single row i.e expensive product
+
+SELECT products.product_title,MAX(price) from products_price
+LEFT JOIN products on products.id = products_price.product_id
+GROUP by products_price.product_id
+ORDER BY MAX(price) DESC LIMIT 1
+
+
+Note: IF you want qty wise expensive product then you can execute below query
+
+SELECT products.product_title,MAX(price) from products_price
+LEFT JOIN products on products.id = products_price.product_id
+GROUP by products_price.product_id
+ORDER BY MAX(price) DESC
+
+
+Name of the cheapest product(s)
+---------------------------------------------------------------
+
+Note: below query will return single row i.e cheapest product
+
+SELECT products.product_title,MIN(price) from products_price LEFT JOIN products on products.id = products_price.product_id GROUP by products_price.product_id ORDER BY MIN(price) DESC LIMIT 1 
+
+
+Note: IF you want qty wise cheapest product then you can execute below query
+
+SELECT products.product_title,MIN(price) from products_price LEFT JOIN products on products.id = products_price.product_id GROUP by products_price.product_id ORDER BY MIN(price) DESC
+
+
+Per item price for 75 memory cards
+---------------------------------------------------------------
+SELECT products.product_title,price from products_price
+LEFT JOIN products on products.id = products_price.product_id
+where products.product_sku = 'memory_card'
+And (products_price.start_qty <= 75 AND products_price.end_qty >= 75)
+
+
+
+Per item price for 6 hammers
+---------------------------------------------------------------
+SELECT products.product_title,price from products_price
+LEFT JOIN products on products.id = products_price.product_id
+where products.product_sku = 'hammers'
+And (products_price.start_qty <= 6 AND products_price.end_qty >= 6)
+
