@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return Redirect::route('admin.dashboard');
+    return Redirect::route('user.index');
 });
 
 Route::get('login', array('as' => 'login', 'uses' => 'Auth\LoginController@login'));

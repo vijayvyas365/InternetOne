@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author Vijay Vyas <vijayvyas365@gmail.com>
+ */
 
 namespace App\Modules\User\Models;
 
@@ -65,8 +68,9 @@ class User extends InternetOne {
     }
 
     /**
-     * 
+     * It will prepare query for datatable
      * @return type
+     * @author Vijay Vyas <vijayvyas365@gmail.com>
      */
     public function fetchAllDatatable() {
         $q = parent::query();

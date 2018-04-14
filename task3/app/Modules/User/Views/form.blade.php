@@ -13,7 +13,6 @@
 @section('js')
 <script type="text/javascript" src="{{ asset("public/assets/js/plugins/forms/styling/switch.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/assets/js/plugins/forms/styling/switchery.min.js") }}"></script>
-<script type="text/javascript" src="{!! asset('public/assets/ckeditor/ckeditor.js') !!}"></script>
 @stop
 @section('content')
 <form class="form-validate-jquery"  action="{{URL::route("user.store")}}" method="post">
@@ -141,6 +140,16 @@ $(document).ready(function () {
         },
         unhighlight: function (element) { // revert the change done by hightlight
             $(element).closest('.form-group').removeClass('error'); // set error class to the control group
+        },
+        rules: {
+            txtemail : {
+              remote: '{{URL::route("user.emailvalidation",[$data["id"]])}}',
+            }
+        },
+        messages: {
+            txtemail : {
+                remote: 'Email address is already register.',
+            }
         }
     });
     

@@ -7,10 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use App\Modules\User\Models\User;
 use App\Modules\Country\Models\Country;
-
 use Auth;
 use Session;
-
 
 class UserController extends Controller {
 
@@ -66,11 +64,9 @@ class UserController extends Controller {
             }
             User::updateOrCreate(["id" => $id], $arr);
             Session::flash('flash_message', "User has been saved successfully.");
-        } 
-        catch (\Illuminate\Database\QueryException $e){
+        } catch (\Illuminate\Database\QueryException $e) {
             Session::flash('error_message', "Oops! Something went wrong. Please contact to useristrator.");
-        }
-        catch (Exception $ex) {
+        } catch (Exception $ex) {
             Session::flash('error_message', "Oops! Something went wrong. Please contact to useristrator.");
         }
         return Redirect::route("user.index");
@@ -142,38 +138,6 @@ class UserController extends Controller {
         } else {
             echo "true";
         }
-    }
-
-    /**
-     * Its change profile view
-     * @author Vijay Vyas <vijayvyas365@gmail.com>
-     */
-    public function changeprofile(Request $request) {
-
-
-        if ($request->isMethod('post')) {
-            $arr = array();
-            $arr["fname"] = $request->input("txtfname");
-            $arr["lname"] = $request->input("txtlname");
-            $arr["email"] = $request->input("txtemail");
-
-            $arr["address"] = $request->input("txtaddress");
-            $arr["city"] = $request->input("txtcity");
-            $arr["state"] = $request->input("txtstate");
-            $arr["country"] = $request->input("country");
-            $arr["zipcode"] = $request->input("txtzipcode");
-            $arr["mobile_no"] = $request->input("txtmobile");
-            $arr["gender"] = $request->input("gender");
-
-
-            $arr["modified_by"] = Auth::user()->id;
-
-            User::updateOrCreate(["id" => Auth::user()->id], $arr);
-
-            Session::flash('flash_message', "Your profile has been changed successfully.");
-            return redirect("changeprofile");
-        }
-        return view("User::changeprofile");
     }
 
 }

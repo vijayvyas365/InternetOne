@@ -30,7 +30,7 @@ use AuthenticatesUsers;
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.

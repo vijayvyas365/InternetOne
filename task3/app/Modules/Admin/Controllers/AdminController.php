@@ -14,14 +14,5 @@ use View;
 
 class AdminController extends Controller {
     
-    /**
-     * Display a listing of the resource.
-     * @return \Illuminate\Http\Response
-     * @author Vijay Vyas <vijayvyas365@gmail.com>
-     */
-    public function index(Request $request) {
-        return view("Admin::index");
-    }
-    
 
 }
