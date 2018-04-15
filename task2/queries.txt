@@ -1,3 +1,16 @@
+
+
+The database will have lacks of records, so give a due consideration to performance
+-----------------------------------------------------------------------------------
+
+To make search faster, i have created index for below three column
+
+ALTER TABLE `products_price` ADD INDEX `start_qty` (`start_qty`) 
+ALTER TABLE `products_price` ADD INDEX `end_qty` (`end_qty`) 
+ALTER TABLE `products_price` ADD INDEX `price` (`price`) 
+
+
+
 Name of the most expensive product(s)
 ---------------------------------------------------------------
 
