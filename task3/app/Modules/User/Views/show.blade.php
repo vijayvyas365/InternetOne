@@ -78,11 +78,9 @@
                 <h5 class="panel-title"><i class="icon-user"></i> About <span style="font-style: italic;">"{{$data["info"]->fname}}"</span></h5>
             </div>
             <div class="panel-body">
-                <div class="col-md-6">
-                    {{$data["info"]->about_you}}
+                <div class="col-md-12">
+                    {!! nl2br($data["info"]->about_you) !!}
                 </div>
-
-
             </div>
             
         </div>
